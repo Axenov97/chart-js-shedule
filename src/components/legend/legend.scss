@@ -1,0 +1,42 @@
+.legends {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  .legend {
+    display: flex;
+    gap: 4px;
+
+    .legend__box {
+      width: 50px;
+      height: 25px;
+      border-radius: 3px;
+    }
+
+    .legend__name {
+      font-weight: 400;
+      font-size: 16px;
+      color: #222222;
+    }
+  }
+}
+@media (max-width: 1439.99px) {
+  .legends {
+    order: 2;
+    gap: 4px;
+    .legend {
+      align-items: center;
+      .legend__name {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .legends {
+    .legend {
+      .legend__name {
+        font-size: 12px;
+      }
+    }
+  }
+}
