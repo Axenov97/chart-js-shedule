@@ -25,7 +25,7 @@ const HeadBar = ({dateInterval}) => {
     const labelTooltip = (tooltipItem) => {
         const barEnd = new Date(tooltipItem.parsed._custom.barEnd).toLocaleString()
         const barStart = new Date(tooltipItem.parsed._custom.barStart).toLocaleString()
-        return ('Плановое время работы ' + barStart + ' - ' + barEnd)
+        return ['Плановое время:', `с ${barStart}`, `по ${barEnd}`]
     }
 
     const afterTitleTooltip = (tooltipItem) => {
@@ -82,6 +82,9 @@ const HeadBar = ({dateInterval}) => {
         maintainAspectRatio: false,
         responsive: true,
         events: ['click'], //заменим hover на click для вывода инфы по каждой смене
+        animation: {
+            duration: 0
+        },
         plugins: {
             legend: {display: false},
             tooltip: {
@@ -187,11 +190,21 @@ const HeadBar = ({dateInterval}) => {
         const countDays = Math.floor((maxDate - minDate) / (24 * 3600 * 1000));
 
         if (!tablet) {
-            barContainer.style.width = `${countDays * 300}px`
+            if ((countDays * 300) < scrollBar.offsetWidth) {
+                barContainer.style.width = `${scrollBar.offsetWidth - 30 }px`
+            } else  {
+                barContainer.style.width = `${countDays * 300}px`
+            }
             barContainer.style.height = `${localData.planned.length * 90}px`
             countDays > 4 ? scrollBar.style.overflowX = 'scroll' : scrollBar.style.overflowX = 'hidden'
+
+
         } else if (tablet){
-            barContainer.style.width = `${countDays * 150}px`
+            if ((countDays * 150) < scrollBar.offsetWidth) {
+                barContainer.style.width = `${scrollBar.offsetWidth - 20 }px`
+            } else {
+                barContainer.style.width = `${countDays * 150}px`
+            }
             barContainer.style.height = `${localData.planned.length * 90}px`
             scrollBar.style.overflowX = 'auto'
         }
