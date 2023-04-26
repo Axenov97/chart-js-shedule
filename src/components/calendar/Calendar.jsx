@@ -1,14 +1,16 @@
-import React, { useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import {ru} from 'date-fns/locale';
 import './calendar.scss';
-
+import calendar from './../../../src/assets/calendar.svg'
 
 const Calendar = ({dateInterval, setDateInterval}) => {
-    const [isOpenCalendar, setIsOpenCalendar] = useState(false)
+    const calendarRef = useRef(null)
+    const calendarBtnRef = useRef(null)
 
+    const [isOpenCalendar, setIsOpenCalendar] = useState(false)
     const [selectionRange, setSelectionRange] = useState({
         startDate: new Date(dateInterval[0]),
         endDate: new Date(dateInterval[1]),
@@ -16,10 +18,11 @@ const Calendar = ({dateInterval, setDateInterval}) => {
     });
 
     const handleSelect = (ranges) => {
+        console.log(ranges)
         setSelectionRange(ranges.selection)
 
+        const inputEndDate = new Date(new Date(ranges.selection.endDate).getTime() + 86400000);
         const inputStartDate = new Date(ranges.selection.startDate);
-        const inputEndDate = new Date(ranges.selection.endDate);
 
         const startYear = inputStartDate.getFullYear();
         const startMonth = (inputStartDate.getMonth() + 1).toString().length < 2 ? '0' + (inputStartDate.getMonth() + 1) : inputStartDate.getMonth() + 1;
@@ -35,9 +38,23 @@ const Calendar = ({dateInterval, setDateInterval}) => {
         setDateInterval([outputStartDate, outputEndDate])
     }
 
+    const handleClickOutside = (event) => {
+        if (calendarRef.current && !calendarRef.current.contains(event.target) && !calendarBtnRef.current.contains(event.target)) {
+             setIsOpenCalendar(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside, true);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
+
     return <>
-        <button className='calendar-btn' onClick={() => setIsOpenCalendar(!isOpenCalendar)}>{isOpenCalendar ? 'Скрыть календарь' : 'Выбрать период' }</button>
-        <div className={isOpenCalendar ? 'calendar active' : 'calendar'}>
+        <img src={calendar} className='calendar-btn' onClick={() => setIsOpenCalendar(!isOpenCalendar)} ref={calendarBtnRef} alt='calendar'/>
+
+        <div className={isOpenCalendar ? 'calendar active' : 'calendar'} ref={calendarRef}>
             <DateRange
                 locale={ru}
                 className={'date-range'}

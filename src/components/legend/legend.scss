@@ -5,13 +5,22 @@
   .legend {
     display: flex;
     gap: 4px;
-
+    &:nth-child(1) {
+      .legend__box {background-color: #ff7adc;}
+    }
+    &:nth-child(2) {
+      .legend__box {
+        border: 1.5px solid #3d91ff;
+        background-image: url("./../../../src/assets/back.svg");
+        background-repeat: repeat;
+        background-size: 10px;
+      }
+    }
     .legend__box {
       width: 50px;
       height: 25px;
       border-radius: 3px;
     }
-
     .legend__name {
       font-weight: 400;
       font-size: 16px;
@@ -21,7 +30,6 @@
 }
 @media (max-width: 1439.99px) {
   .legends {
-    order: 2;
     gap: 4px;
     .legend {
       align-items: center;
@@ -31,8 +39,9 @@
     }
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 900px) {
   .legends {
+    order:1 ;
     .legend {
       .legend__name {
         font-size: 12px;

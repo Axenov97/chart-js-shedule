@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import useMatchMedia from 'use-match-media-hook'
 import {Bar} from "react-chartjs-2";
-import jsonData from "../../data.json";
+import jsonData from "./../../../src/assets/data.json";
+import imageDash from "./../../../src/assets/back.svg";
 import {ru} from "date-fns/locale";
 import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, TimeScale, Title, Tooltip, Legend} from 'chart.js';
 import './head-bar.scss';
 import getActualShift from "../../getActualShift";
-import {tr} from "react-date-range/dist/locale";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, TimeScale, Title, Tooltip, Legend);
 
@@ -122,11 +122,6 @@ const HeadBar = ({dateInterval}) => {
             },
             x2: {
                 position: 'bottom',
-                adapters: {
-                    date: {
-                        locale: ru
-                    }
-                },
                 type: 'time',
                 time: {unit: 'hour'},
                 min: dateInterval[0],
@@ -158,7 +153,7 @@ const HeadBar = ({dateInterval}) => {
     useEffect(() => {
         const ctx = document.getElementById('bar').getContext('2d');
         const img = new Image();
-        img.src = './src/assets/back.svg'
+        img.src = imageDash
         img.onload = () => {
             setDash(ctx.createPattern(img, "repeat"))
         }

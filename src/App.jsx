@@ -12,12 +12,8 @@ function App() {
             <HeadBar dateInterval={dateInterval}/>
             <div className="settings-bar">
                 <div className="legends">
-                    <CustomLegend name={'- плановое время работы'} color={'#FFBDE9'} border={'1px solid #FFBDE9'}/>
-                    <CustomLegend
-                        name={'- фактическое время работы'}
-                        color={'repeating-linear-gradient(-60deg, #3d91ff 0, #3d91ff 1px, transparent 1px, transparent 5px)'}
-                        border={'1px solid #3d91ff'}
-                    />
+                    <CustomLegend name={'- плановое время работы'} />
+                    <CustomLegend name={'- фактическое время работы'}/>
                 </div>
                 <Calendar dateInterval={dateInterval} setDateInterval={setDateInterval} />
             </div>

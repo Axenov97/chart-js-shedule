@@ -11,7 +11,7 @@
     flex: 0 0 75%;
     max-width: 1285px;
     padding: 12px;
-    box-shadow: 2px 0px 50px 2px rgba(120, 120, 120, 0.2);
+    box-shadow: 2px 0 50px 2px rgba(120, 120, 120, 0.2);
     border-radius: 10px;
     background-color: #FFFFFF;
     transition: all .3s linear;
@@ -65,5 +65,11 @@
       border-radius: 0;
       background-color: transparent;
     }
+  }
+}
+
+@media (max-width: 900px) {
+  .settings-bar {
+     padding: 0 16px !important;
   }
 }

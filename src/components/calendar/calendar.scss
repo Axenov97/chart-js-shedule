@@ -13,9 +13,8 @@
 
 @media (max-width: 1439.99px) {
   .calendar {
-    order: 1;
     position: relative;
-    left: -160px;
+    left: -45px;
     top: 10px;
     visibility: hidden;
     opacity: 0;
@@ -37,31 +36,14 @@
   }
   .calendar-btn {
     display: block;
-    order: 0;
-    min-width: 160px;
-    height: 25px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    color: #FFFFFF;
-    background-color: #3d91ff;
-    border-radius: 3px;
     cursor: pointer;
-    transition: all .4s ease-in-out;
-
-    &:hover {
-      border-radius: 10px;
-    }
+    width: 35px;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .calendar {
-    left: -130px;
+    order: 0;
+    left: -50px;
     top: 20px;
-  }
-  .calendar-btn {
-    font-size: 12px;
-    min-width: 120px;
-    height: 90%;
   }
 }

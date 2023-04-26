@@ -1,4 +1,4 @@
-import jsonData from "./data.json";
+import jsonData from "./../src/assets/data.json";
 
 export default function getActualShift(tooltipItem) {
     const localData = JSON.parse(JSON.stringify(jsonData))
