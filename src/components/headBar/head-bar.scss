@@ -56,6 +56,12 @@
     }
   }
 }
+@media (max-width: 900px) {
+  .settings-bar {
+    padding: 0 16px !important;
+  }
+}
+
 @media (max-width: 600px) {
   .main-container {
     padding: 8px;
@@ -68,8 +74,22 @@
   }
 }
 
-@media (max-width: 900px) {
-  .settings-bar {
-     padding: 0 16px !important;
+@media (max-width: 400px) {
+  #root {
+    display: block;
+  }
+  .main-container {
+    height: auto;
+    .settings-bar {
+      position: fixed;
+      top: 0;
+      background: #ffffff;
+      padding: 16px !important;
+    }
+    .scroll-bar {
+      overflow-x: hidden;
+      position: relative;
+      top: 100px;
+    }
   }
 }

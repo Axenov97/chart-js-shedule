@@ -18,7 +18,6 @@ const Calendar = ({dateInterval, setDateInterval}) => {
     });
 
     const handleSelect = (ranges) => {
-        console.log(ranges)
         setSelectionRange(ranges.selection)
 
         const inputEndDate = new Date(new Date(ranges.selection.endDate).getTime() + 86400000);

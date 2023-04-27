@@ -66,7 +66,6 @@ const HeadBar = ({dateInterval}) => {
 
     const titleTooltip = (tooltipItem) => {
         if (tooltipItem.length === 1) {
-            console.log(tooltipItem)
             for (let employee of localData.planned) {
                 if (tooltipItem[0].raw.y === employee.id) {
                     return employee.name
@@ -196,7 +195,7 @@ const HeadBar = ({dateInterval}) => {
                 barContainer.style.width = `${countDays * 300}px`
             }
             barContainer.style.height = `${localData.planned.length * 90}px`
-            countDays > 4 ? scrollBar.style.overflowX = 'scroll' : scrollBar.style.overflowX = 'hidden'
+            countDays > 3 ? scrollBar.style.overflowX = 'scroll' : scrollBar.style.overflowX = 'hidden'
 
 
         } else if (tablet){
